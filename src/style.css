@@ -1,0 +1,14 @@
+#board {
+    background-color: tomato;
+    display: flex;
+}
+
+.columns {
+    display: flex;
+}
+
+#modal {
+    background-color: lightseagreen;
+    height: 50px;
+    width: 350px;
+}
