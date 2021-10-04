@@ -17,6 +17,7 @@ const createBoard = () =>
         column.class = 'columns'
         column.id = `column${i}`
         boardSection.appendChild(column)
+        board[i] = []
 
         for (j = 5; j >= 0; j--)
         {
@@ -25,6 +26,7 @@ const createBoard = () =>
             div.style.height = '50px'
             div.id = `index${j}`
             column.appendChild(div)
+            board[i][j] = ''
         }
     }
 
