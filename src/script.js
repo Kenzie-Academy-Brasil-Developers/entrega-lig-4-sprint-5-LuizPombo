@@ -34,14 +34,14 @@ createBoard()
 const checkVictory = (id) =>
 {
     const cell = document.getElementById(id)
-    const check = cell.firstElementChild.id
+    const check = cell.firstElementChild.className
     const coord = id.split('-')
 
     // vertical
     let count = 0
     let xy = [...coord]
-    while (xy[1] > 0) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`) === check) { count++ }
+    while (xy[1] >= 0) {
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
         else { break }
         xy[1]--
     }
@@ -50,14 +50,14 @@ const checkVictory = (id) =>
     // horizontal
     count = 0
     xy = [...coord]
-    while (xy[0] > 0) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`) === check) { count++ }
+    while (xy[0] >= 0) {
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
         else { break }
         xy[0]--
     }
     xy = [...coord]
     while (xy[0] < 8) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`) === check) { count++ }
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
         else { break }
         xy[0]++
     }
@@ -66,15 +66,15 @@ const checkVictory = (id) =>
     // diagonal direita
     count = 0
     xy = [...coord]
-    while (xy[0] > 0 || xy[1] > 0) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`) === check) { count++ }
+    while (xy[0] >= 0 && xy[1] >= 0) {
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
         else { break }
         xy[0]--
         xy[1]--
     }
     xy = [...coord]
-    while (xy[0] < 7 || xy[1] < 6) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`) === check) { count++ }
+    while (xy[0] < 7 && xy[1] < 6) {
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
         else { break }
         xy[0]++
         xy[1]++
@@ -84,15 +84,15 @@ const checkVictory = (id) =>
     // diagonal esquerda
     count = 0
     xy = [...coord]
-    while (xy[0] > 0 || xy[1] < 6) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`) === check) { count++ }
+    while (xy[0] >= 0 && xy[1] < 6) {
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
         else { break }
         xy[0]--
         xy[1]++
     }
     xy = [...coord]
-    while (xy[0] < 7 || xy[1] > 0) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`) === check) { count++ }
+    while (xy[0] < 7 && xy[1] >= 0) {
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
         else { break }
         xy[0]++
         xy[1]--
