@@ -1,3 +1,32 @@
+/*-------------TELA-INICIAL------------*/
+header {
+    font-size: 50px;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 50px;
+}
+
+#btn-start{
+    background-color: rgb(13, 91, 163);
+    border-style: none;
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+    font-weight: 500;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+#tela-inicial {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/*-----------MONTAGEM QUADRO------------*/
+
 #board {
     margin-left: 15vw;
     width:  70vw;
@@ -9,16 +38,48 @@
 .columns {
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    cursor: pointer;
+}
+
+.columns:hover{
+    border: 4px solid black;
 }
 
 .cells {
     width: 100%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 
 #modal {
     background-color: lightseagreen;
-    height: 50px;
+    height: 10vh;
     width: 70vw;
     margin-left: 15vw;
+    border: 1px solid black;
+}
+
+/*----------------PEÇAS----------------------*/
+
+.bola{
+    border-radius: 100%;
+    background-color: black;
+    width: 85%;
+    height: 85%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bolaAzul{
+    border-radius: 100%;
+    background-color: blue;
+    width: 85%;
+    height: 85%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
