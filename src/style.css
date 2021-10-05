@@ -1,14 +1,24 @@
 #board {
-    background-color: tomato;
+    margin-left: 15vw;
+    width:  70vw;
+    height: 60vw;
     display: flex;
+    background-color: tomato;
 }
 
 .columns {
+    height: 100%;
     display: flex;
+    flex-direction: column;
+}
+
+.cells {
+    width: 100%;
 }
 
 #modal {
     background-color: lightseagreen;
     height: 50px;
-    width: 350px;
+    width: 70vw;
+    margin-left: 15vw;
 }
