@@ -1,3 +1,32 @@
+/*-------------TELA-INICIAL------------*/
+header {
+    font-size: 50px;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 50px;
+}
+
+#btn-start{
+    background-color: rgb(13, 91, 163);
+    border-style: none;
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+    font-weight: 500;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+#tela-inicial {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/*-----------MONTAGEM QUADRO------------*/
+
 #board {
     margin-left: 15vw;
     width:  70vw;
@@ -31,9 +60,22 @@
     border: 1px solid black;
 }
 
+/*----------------PEÇAS----------------------*/
+
 .bola{
     border-radius: 100%;
     background-color: black;
+    width: 85%;
+    height: 85%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bolaAzul{
+    border-radius: 100%;
+    background-color: blue;
     width: 85%;
     height: 85%;
     position: relative;
