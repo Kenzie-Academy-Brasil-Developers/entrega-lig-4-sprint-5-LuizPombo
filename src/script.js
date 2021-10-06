@@ -68,7 +68,6 @@ function select(evt) {
             console.log('bowser')
             selecionado++
             firstPlayer = bowser_img.src
-
         }
         console.log(`Player: ${firstPlayer}`)
 
@@ -172,9 +171,8 @@ function select(evt) {
                             victory(celula.id)
 
                             break;
-                        }
+                        }else {
 
-                    } else {
 
                         if (celula.childElementCount === 0) {
                             let secondPlayerImage = document.createElement('img')
@@ -202,8 +200,9 @@ function select(evt) {
         function checkVictory(id) {
             const check = document.getElementById(id).firstElementChild.className
             const coord = id.split('-')
-
             // vertical
+            
+            
             let count = 0
             let xy = [...coord]
             let cell = String
@@ -302,7 +301,6 @@ function select(evt) {
                     show.appendChild(empate)
                 }
             }
-
         }
     }
 }
