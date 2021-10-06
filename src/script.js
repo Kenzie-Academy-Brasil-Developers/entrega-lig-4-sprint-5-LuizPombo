@@ -98,16 +98,16 @@ playButton.addEventListener('click', function(){
 // const checkVictory = (id) =>
 function checkVictory(id)
 {
-    const cell = document.getElementById(id)
-    const check = cell.firstElementChild.className
+    const check = document.getElementById(id).firstElementChild.className
     const coord = id.split('-')
 
     // vertical
     let count = 0
     let xy = [...coord]
+    let cell = String
     while (xy[1] >= 0) {
-        console.log(xy[1])
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
         else { break }
         xy[1]--
     }
@@ -117,53 +117,59 @@ function checkVictory(id)
     count = 0
     xy = [...coord]
     while (xy[0] >= 0) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
         else { break }
         xy[0]--
     }
     xy = [...coord]
-    while (xy[0] < 8) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
+    while (xy[0] < 7) {
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
         else { break }
         xy[0]++
     }
-    if (count >= 4) return true
+    if (count >= 5) return true
 
     // diagonal direita
     count = 0
     xy = [...coord]
     while (xy[0] >= 0 && xy[1] >= 0) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
         else { break }
         xy[0]--
         xy[1]--
     }
     xy = [...coord]
     while (xy[0] < 7 && xy[1] < 6) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
         else { break }
         xy[0]++
         xy[1]++
     }
-    if (count >= 4) return true
+    if (count >= 5) return true
 
     // diagonal esquerda
     count = 0
     xy = [...coord]
     while (xy[0] >= 0 && xy[1] < 6) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
         else { break }
         xy[0]--
         xy[1]++
     }
     xy = [...coord]
     while (xy[0] < 7 && xy[1] >= 0) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
         else { break }
         xy[0]++
         xy[1]--
     }
-    if (count >= 4) return true
+    if (count >= 5) return true
 
     return false
 }
