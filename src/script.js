@@ -42,9 +42,9 @@ playButton.addEventListener('click', function(){
         }
 
 
-        const modal = document.createElement('section')
-        modal.id = 'modal'
-        body.appendChild(modal)
+        const dialog = document.createElement('section')
+        dialog.id = 'dialog'
+        body.appendChild(dialog)
     }
 
     /*------------------JOGABILIDADE-------------------*/
@@ -66,9 +66,11 @@ playButton.addEventListener('click', function(){
 
                 if (celula.childElementCount === 0) {
                     let bolinha = document.createElement('div')
-                    bolinha.classList.add('bola')
+                    bolinha.classList.add('bolaPreta')
                     celula.appendChild(bolinha)
                     console.log(checkVictory(celula.id))
+                    victory(celula.id)
+
                     break;
                 }
 
@@ -79,13 +81,13 @@ playButton.addEventListener('click', function(){
                     blueBall.classList.add('bolaAzul')
                     celula.appendChild(blueBall)
                     console.log(checkVictory(celula.id))
+                    victory(celula.id)
 
                     break;
                 } 
             } 
         }
-        alteraCor = !alteraCor
-        
+        alteraCor = !alteraCor 
     }
 
     createBoard()
@@ -173,3 +175,33 @@ function checkVictory(id)
 
     return false
 }
+
+/*------------DEMONSTRANDO-VITORIA-EMPATE-------------------*/
+
+let count = 0
+
+function victory (id){
+    const show = document.getElementById('dialog')
+
+    if  (checkVictory(id) === true) {
+        const vitoria = document.createElement('p')
+        let winner = document.getElementById(id).firstElementChild.className
+        
+        vitoria.innerText = `O vencedor é ${winner}`
+        
+        show.appendChild(vitoria)
+
+        // encerrar o game
+    } else { 
+        count += 1
+        console.log(count)
+        
+        if ( count >= 42){
+            const empate = document.createElement('p')
+            empate.innerText = 'Empatou'
+            show.appendChild(empate)
+        }
+    }
+
+}
+
