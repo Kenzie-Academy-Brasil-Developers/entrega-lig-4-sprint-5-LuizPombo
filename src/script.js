@@ -15,6 +15,7 @@ playButton.addEventListener('click', function(){
     /*------------------CRIANDO-QUADRO------------------*/
 
     const boardArray = []
+    document.getElementById('music').play()
     
     const createBoard = () => {
         const body = document.querySelector('body')
@@ -182,6 +183,9 @@ function victory (id){
     const show = document.getElementById('dialog')
 
     if  (checkVictory(id) === true) {
+        document.getElementById('music').pause()
+        document.getElementById('win').play()
+
         const vitoria = document.createElement('p')
         let winner = document.getElementById(id).firstElementChild.className
         
@@ -194,6 +198,9 @@ function victory (id){
         count += 1
         
         if ( count >= 42){
+            document.getElementById('music').pause()
+            document.getElementById('draw').play()
+
             const empate = document.createElement('p')
             empate.innerText = 'Empatou'
             show.appendChild(empate)
