@@ -24,7 +24,7 @@ playButton.addEventListener('click', function(){
 
         for (i = 0; i < 7; i++) {
             const column = document.createElement('div')
-            column.className = 'columns'
+            column.className = 'columns', 'delayed'
             column.id = `column${i}`
             column.style.width = `${100 / 7}%`
             board.appendChild(column)
