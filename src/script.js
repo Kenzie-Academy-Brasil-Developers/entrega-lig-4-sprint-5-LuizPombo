@@ -58,7 +58,7 @@ playButton.addEventListener('click', function(){
         let columnNumber = posit[posit.length - 1]
 
         
-        for (let i = 5; i >= 0; i--) {
+        for (let i = 0; i <= 5; i++) {
             let celula = document.getElementById(`${columnNumber}-${i}`)
 
 
@@ -68,6 +68,7 @@ playButton.addEventListener('click', function(){
                     let bolinha = document.createElement('div')
                     bolinha.classList.add('bola')
                     celula.appendChild(bolinha)
+                    console.log(checkVictory(celula.id))
                     break;
                 }
 
@@ -77,6 +78,8 @@ playButton.addEventListener('click', function(){
                     let blueBall = document.createElement('div')
                     blueBall.classList.add('bolaAzul')
                     celula.appendChild(blueBall)
+                    console.log(checkVictory(celula.id))
+
                     break;
                 } 
             } 
@@ -92,9 +95,8 @@ playButton.addEventListener('click', function(){
 /*------------------------WIN-CONDITION--------------------*/
 
 
-createBoard()
-
-const checkVictory = (id) =>
+// const checkVictory = (id) =>
+function checkVictory(id)
 {
     const cell = document.getElementById(id)
     const check = cell.firstElementChild.className
@@ -104,7 +106,8 @@ const checkVictory = (id) =>
     let count = 0
     let xy = [...coord]
     while (xy[1] >= 0) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
+        console.log(xy[1])
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
         else { break }
         xy[1]--
     }
@@ -114,13 +117,13 @@ const checkVictory = (id) =>
     count = 0
     xy = [...coord]
     while (xy[0] >= 0) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
         else { break }
         xy[0]--
     }
     xy = [...coord]
     while (xy[0] < 8) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
         else { break }
         xy[0]++
     }
@@ -130,14 +133,14 @@ const checkVictory = (id) =>
     count = 0
     xy = [...coord]
     while (xy[0] >= 0 && xy[1] >= 0) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
         else { break }
         xy[0]--
         xy[1]--
     }
     xy = [...coord]
     while (xy[0] < 7 && xy[1] < 6) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
         else { break }
         xy[0]++
         xy[1]++
@@ -148,14 +151,14 @@ const checkVictory = (id) =>
     count = 0
     xy = [...coord]
     while (xy[0] >= 0 && xy[1] < 6) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
         else { break }
         xy[0]--
         xy[1]++
     }
     xy = [...coord]
     while (xy[0] < 7 && xy[1] >= 0) {
-        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElemendChild.className === check) { count++ }
+        if (document.getElementById(`${xy[0]}-${xy[1]}`).firstElementChild.className === check) { count++ }
         else { break }
         xy[0]++
         xy[1]--
