@@ -68,7 +68,6 @@ playButton.addEventListener('click', function(){
                     let bolinha = document.createElement('div')
                     bolinha.classList.add('bolaPreta')
                     celula.appendChild(bolinha)
-                    console.log(checkVictory(celula.id))
                     victory(celula.id)
 
                     break;
@@ -80,7 +79,6 @@ playButton.addEventListener('click', function(){
                     let blueBall = document.createElement('div')
                     blueBall.classList.add('bolaAzul')
                     celula.appendChild(blueBall)
-                    console.log(checkVictory(celula.id))
                     victory(celula.id)
 
                     break;
@@ -194,7 +192,6 @@ function victory (id){
         // encerrar o game
     } else { 
         count += 1
-        console.log(count)
         
         if ( count >= 42){
             const empate = document.createElement('p')
