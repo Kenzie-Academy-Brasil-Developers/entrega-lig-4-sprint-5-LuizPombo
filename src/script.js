@@ -42,9 +42,9 @@ playButton.addEventListener('click', function(){
         }
 
 
-        const modal = document.createElement('section')
-        modal.id = 'modal'
-        body.appendChild(modal)
+        const dialog = document.createElement('section')
+        dialog.id = 'dialog'
+        body.appendChild(dialog)
     }
 
     /*------------------JOGABILIDADE-------------------*/
@@ -84,8 +84,7 @@ playButton.addEventListener('click', function(){
                 } 
             } 
         }
-        alteraCor = !alteraCor
-        
+        alteraCor = !alteraCor 
     }
 
     createBoard()
