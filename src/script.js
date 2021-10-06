@@ -8,6 +8,7 @@ const startScreen = document.createElement('div')
 startScreen.id = 'tela-inicial'
 document.body.appendChild(startScreen)
 
+
 /*-------------PERSONAGENS-------------------*/
 
 const mario_img = document.createElement('img')

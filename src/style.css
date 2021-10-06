@@ -40,11 +40,17 @@ header {
 
 /*-----------MONTAGEM QUADRO------------*/
 
+body{
+    background-image: url('https://mfiles.alphacoders.com/819/819652.png');
+    background-size: cover;
+    
+}
+
 #board {
-    margin-left: 15vw;
-    width:  70vw;
-    height: 60vw;
+    width:  99vw;
+    height: 50vh;
     display: flex;
+    margin-left: 2px;
     background-color: tomato;
 }
 
@@ -53,25 +59,36 @@ header {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-}
-
-.columns:hover{
     border: 2px solid black;
     box-sizing: border-box;
 }
 
+.columns:active{
+    border: 2px solid blue;
+    box-sizing: border-box;
+}
+
+.delayed {
+    transition: all 0.2s;
+    transition-delay: 300ms;
+}
+  
+.delayed:active {
+    transition: none;
+}
+
 .cells {
     width: 100%;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
 }
 
 #dialog {
+    display: flex;
     background-color: lightseagreen;
-    height: 10vh;
-    width: 70vw;
-    margin-left: 15vw;
-    border: 1px solid black;
+    height: 18vh;
+    width: 99vw;
+    border: 2px solid black;
+    box-sizing: border-box;
+    margin-left: 2px;
 }
 
 /*----------------PEÇAS----------------------*/
@@ -96,4 +113,86 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+
+@media (min-width: 410px){
+
+    #board {
+        margin-left: 10vw;
+        width:  80vw;
+        height: 55vh;
+    }
+
+    #dialog{
+        width: 80vw;
+        margin-left: 10vw;
+        height: 20vh;
+    }
+
+    
+
+    
+
+}
+
+
+@media (min-width: 770px){
+
+#board{
+width: 50%;
+display: inline-flex;
+height: 48vh;
+    
+
+}
+
+
+#dialog{
+width: 25%;
+height: 40vh;
+float: right;
+margin-right: 5%;
+}
+
+body{
+    background-image: url('https://i.pinimg.com/originals/31/0d/4a/310d4a2f36b4fe4a07a31f5f7759a4d3.jpg');
+    background-size: cover;
+}
+
+
+}
+
+
+@media (min-width: 1000px){
+
+
+    #board{
+        height: 75vh;
+            
+        
+        }
+        
+        
+       
+
+
+
+
+}
+
+@media (min-width: 1300px){
+
+
+    #board{
+        height: 80vh;
+            
+        
+        }
+        
+        
+        
+
+
+
 }
