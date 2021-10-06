@@ -115,6 +115,7 @@ function select(evt) {
             const boardArray = []
 
             const createBoard = () => {
+                document.getElementById("music").play()
                 const body = document.querySelector('body')
                 const board = document.createElement('section')
                 board.id = 'board'
@@ -171,7 +172,8 @@ function select(evt) {
                             victory(celula.id)
 
                             break;
-                        }else {
+                        }
+                    }   else {
 
 
                         if (celula.childElementCount === 0) {
@@ -287,7 +289,8 @@ function select(evt) {
                 let winner = document.getElementById(id).firstElementChild.className
 
                 vitoria.innerText = `O vencedor é ${winner}`
-
+                document.getElementById("music").pause()
+                document.getElementById("win").play()
                 show.appendChild(vitoria)
 
                 // encerrar o game
@@ -298,6 +301,8 @@ function select(evt) {
                 if (count >= 42) {
                     const empate = document.createElement('p')
                     empate.innerText = 'Empatou'
+                    document.getElementById("music").pause()
+                    document.getElementById("draw").play()
                     show.appendChild(empate)
                 }
             }
