@@ -135,9 +135,6 @@ function select(evt) {
             playButton.style.display = 'none'
 
             /*------------------CRIANDO-QUADRO------------------*/
-
-            const boardArray = []
-
             const createBoard = () => {
                 document.getElementById("music").play()
                 const body = document.querySelector('body')
@@ -151,7 +148,6 @@ function select(evt) {
                     column.id = `column${i}`
                     column.style.width = `${100 / 7}%`
                     board.appendChild(column)
-                    boardArray[i] = []
 
                     for (j = 5; j >= 0; j--) {
                         const div = document.createElement('div')
@@ -159,7 +155,6 @@ function select(evt) {
                         div.id = `${i}-${j}`
                         div.style.height = `${100 / 6}%`
                         column.appendChild(div)
-                        boardArray[i][j] = ''
                     }
                     column.addEventListener('click', selecionar)
                 }
