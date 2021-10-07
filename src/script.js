@@ -167,6 +167,7 @@ function select(evt) {
 
                 const dialog = document.createElement('section')
                 dialog.id = 'dialog'
+                dialog.innerText = 'Cada jogador deve colocar quatro de suas peças em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo.'
                 body.appendChild(dialog)
             }
 
@@ -328,6 +329,9 @@ function select(evt) {
                 winner.id = 'winner_img'
 
                 if (winClass === 'bolaPreta'){
+                    const dialog = document.getElementById('dialog')
+                    dialog.innerHTML = ''
+                    
                     winner.src = firstPlayer
 
                     if (firstPlayer === mario_img.src){
@@ -346,7 +350,9 @@ function select(evt) {
                     }
                 
                 } else {
+                    dialog.innerHTML = ''
                     winner.src = secondPlayer
+            
                 
                     if (secondPlayer === mario_img.src){
                         endGame.appendChild(mario_gif)
