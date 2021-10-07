@@ -1,25 +1,44 @@
 /*-------------TELA-INICIAL------------*/
+@font-face {
+    font-family: 'Super-Mario';
+    src: url('./fonts/SuperMario256.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 header {
-    font-size: 50px;
+    font-family: 'Super-Mario', sans-serif;
     text-align: center;
-    font-family: sans-serif;
+    font-size: 50px;
+    color: white;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
     margin-bottom: 50px;
+    margin-top: 10px;
 }
 
 .icones{
-    height: 60px;
-    width:  60px;
-    margin: 5px;
+    height: 100%;
+    width:  100px;
+    margin: 10px;
     cursor: pointer;
+}
+
+#mario , #luigi{
+    width: 112px;
 }
 
 #selecaoPersonagem{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgb(13, 91, 163 , 0.8);
+    width: 80vw;
+    margin-left: 10vw;
+    border-radius: 5px;
+    
 }
 
 #btn-start{
-    background-color: rgb(13, 91, 163);
+    background-color: rgb(13, 91, 163 , 0.8);
     border-style: none;
     border-radius: 5px;
     margin-top: 15px;
@@ -27,8 +46,13 @@ header {
     height: 50px;
     font-weight: 500;
     font-size: 25px;
-    color: white;
+    animation-name: color_text;
+    animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
     cursor: pointer;
+    font-family: 'Super-Mario';
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
 #tela-inicial {
@@ -46,12 +70,26 @@ body{
     
 }
 
+
 #board {
     width:  99vw;
     height: 50vh;
     display: flex;
     margin-left: 2px;
-    background-color: tomato;
+    animation-name: color_change;
+    animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes color_change{
+    from { background-color: rgb(180, 16, 16); }
+	to { background-color: green; }
+}
+
+@keyframes color_text{
+    from { color: red; }
+	to { color: green; }
 }
 
 .columns {
@@ -64,9 +102,10 @@ body{
 }
 
 .columns:active{
-    border: 2px solid blue;
+    border: 4px solid blue;
     box-sizing: border-box;
 }
+
 
 .delayed {
     transition: all 0.2s;
@@ -83,7 +122,7 @@ body{
 
 #dialog {
     display: flex;
-    background-color: lightseagreen;
+    background-color: blue;
     height: 18vh;
     width: 99vw;
     border: 2px solid black;
@@ -94,10 +133,9 @@ body{
 /*----------------PEÇAS----------------------*/
 
 .bolaPreta{
-    border-radius: 100%;
+    
     /* background-color: black; */
-    width: 85%;
-    height: 85%;
+    max-width: 80%;
     position: relative;
     top: 50%;
     left: 50%;
@@ -105,10 +143,9 @@ body{
 }
 
 .bolaAzul{
-    border-radius: 100%;
+    
     /* background-color: blue; */
-    width: 85%;
-    height: 85%;
+    max-width: 80%;
     position: relative;
     top: 50%;
     left: 50%;
@@ -152,12 +189,22 @@ height: 48vh;
 width: 25%;
 height: 40vh;
 float: right;
-margin-right: 5%;
+margin-right: 4%;
+}
+
+#selecaoPersonagem{
+width: 70vw;
+margin-left: 15vw;
 }
 
 body{
     background-image: url('https://i.pinimg.com/originals/31/0d/4a/310d4a2f36b4fe4a07a31f5f7759a4d3.jpg');
     background-size: cover;
+}
+
+.columns:hover{
+    border: 4px solid darkblue;
+    box-sizing:border-box
 }
 
 
@@ -167,13 +214,15 @@ body{
 @media (min-width: 1000px){
 
 
-    #board{
-        height: 75vh;
+#board{
+   height: 75vh;
             
+}
         
-        }
-        
-        
+#selecaoPersonagem{
+    width: 50vw;
+    margin-left: 25vw;
+}        
        
 
 
