@@ -180,7 +180,7 @@ body{
     #board{
         width: 50%;
         display: inline-flex;
-        height: 48vh; 
+        height: 75vh; 
     }
     
     
@@ -195,12 +195,31 @@ body{
         background-image: url('https://i.pinimg.com/originals/31/0d/4a/310d4a2f36b4fe4a07a31f5f7759a4d3.jpg');
         background-size: cover;
     }
-
+    #vitoria_txt {
+        font-size: 40px;
+        text-align: center;
+    }
+    #endBox{
+        background: rgb(221, 88, 65);
+        border: 4px solid red;
+        border-radius: 10px;
+        margin: 40vw;
+        margin-top: 5vh;
+    }
+     .gifs{
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    #winner_img{
+        width: 150px;
+        height: 150px;
+    }
 
 }
 
 
-@media (min-width: 1000px){
+/* @media (min-width: 1000px){
 
 
     #board{
@@ -216,8 +235,6 @@ body{
         background: rgb(221, 88, 65);
         border: 4px solid red;
         border-radius: 10px;
-        /* width: 20vw;
-        height: 100px; */
         margin: 40vw;
         margin-top: 5vh;
     }
@@ -235,7 +252,7 @@ body{
 
 
 
-}
+} */
 
 @media (min-width: 1300px){
 
