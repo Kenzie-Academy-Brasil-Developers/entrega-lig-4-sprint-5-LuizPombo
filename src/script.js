@@ -382,8 +382,7 @@ function select(evt) {
                 count += 1
 
                 if (count >= 42) {
-                    const empate = document.createElement('p')
-                    empate.innerText = 'Empatou'
+                    show.innerText = "Empatou"
                     document.getElementById("music").pause()
                     document.getElementById("draw").play()
                     show.appendChild(empate)
