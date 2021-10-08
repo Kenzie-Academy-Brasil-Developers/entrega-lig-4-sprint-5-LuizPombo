@@ -137,9 +137,9 @@ const checkVictory = (id) => {
 
 /*--------------SELECIONANDO-CHARACTER--------------*/
 
-mario_img.addEventListener('click', select)
-luigi_img.addEventListener('click', select)
-peach_img.addEventListener('click', select)
+mario_img.addEventListener ('click', select)
+luigi_img.addEventListener ('click', select)
+peach_img.addEventListener ('click', select)
 bowser_img.addEventListener('click', select)
 
 let selecionado = 0
@@ -149,56 +149,32 @@ let secondPlayer
 function select(evt) {
 
     if (selecionado === 0) {
-        if (evt.currentTarget.id === 'mario') {
-            console.log('mario')
-            selecionado++
-            firstPlayer = mario_img.src
-            console.log(mario_img)
-
-        } else if (evt.currentTarget.id === 'luigi') {
-            console.log('luigi')
-            selecionado++
-            firstPlayer = luigi_img.src
-
-        } else if (evt.currentTarget.id === 'peach') {
-            console.log('peach')
-            selecionado++
-            firstPlayer = peach_img.src
-
-        } else if (evt.currentTarget.id === 'bowser') {
-            console.log('bowser')
-            selecionado++
-            firstPlayer = bowser_img.src
+        if (evt.currentTarget.id === 'mario')  { firstPlayer = mario_img.src }
+        if (evt.currentTarget.id === 'luigi')  { firstPlayer = luigi_img.src }
+        if (evt.currentTarget.id === 'peach')  { firstPlayer = peach_img.src }
+        if (evt.currentTarget.id === 'bowser') { firstPlayer = bowser_img.src }
+        selecionado ++
         }
-        console.log(`Player: ${firstPlayer}`)
-
-    } else if (selecionado === 1) {
-
+    else if (selecionado === 1) {
         if (evt.currentTarget.id === 'mario' && evt.currentTarget.src !== firstPlayer) {
-            console.log('mario')
             selecionado++
             secondPlayer = mario_img.src
-            console.log(evt.currentTarget.src)
-
-        } else if (evt.currentTarget.id === 'luigi' && evt.currentTarget.src !== firstPlayer) {
-            console.log('luigi')
+        }
+        if (evt.currentTarget.id === 'luigi' && evt.currentTarget.src !== firstPlayer) {
             selecionado++
             secondPlayer = luigi_img.src
-
-        } else if (evt.currentTarget.id === 'peach' && evt.currentTarget.src !== firstPlayer) {
-            console.log('peach')
+        }
+        if (evt.currentTarget.id === 'peach' && evt.currentTarget.src !== firstPlayer) {
             selecionado++
             secondPlayer = peach_img.src
-
-        } else if (evt.currentTarget.id === 'bowser' && evt.currentTarget.src !== firstPlayer) {
-            console.log('bowser')
+        }
+        if (evt.currentTarget.id === 'bowser' && evt.currentTarget.src !== firstPlayer) {
             selecionado++
             secondPlayer = bowser_img.src
-
         }
-        console.log(`Player: ${secondPlayer}`)
+    }
 
-    } if (selecionado === 2) {
+    if (selecionado === 2) {
         charSelect.style.display = 'none'
 
         const playButton = document.createElement('button')
@@ -300,21 +276,19 @@ function select(evt) {
             endGame.id = 'endBox'
 
             if (checkVictory(id) === true) {
-                const vitoria = document.createElement('p')
-                vitoria.id = 'vitoria_txt'
-                
                 const vicShow = document.createElement('div')
+                const vitoria = document.createElement('p')
+                let winner    = document.createElement('img')
+                let winClass  = document.getElementById(id).firstElementChild.className
+
                 vicShow.id = 'vicBox'
+                vitoria.id = 'vitoria_txt'
+                winner.id  = 'winner_img'
 
-                let winClass = document.getElementById(id).firstElementChild.className
-                
-                let winner = document.createElement('img')
-                winner.id = 'winner_img'
-
-                if (winClass === 'bolaPreta'){
+                if (winClass === 'bolaPreta') {
                     const dialog = document.getElementById('dialog')
+
                     dialog.innerHTML = ''
-                    
                     winner.src = firstPlayer
 
                     if (firstPlayer === mario_img.src) { endGame.appendChild(mario_gif) }
@@ -324,7 +298,6 @@ function select(evt) {
                 
                 } else {
                     dialog.innerHTML = ''
-
                     winner.src = secondPlayer
             
                     if (secondPlayer === mario_img.src){ endGame.appendChild(mario_gif) }
@@ -345,15 +318,14 @@ function select(evt) {
 
                 document.body.appendChild(endGame)
 
-                
             } else {
                 count += 1
 
                 if (count >= 42) {
-                    const empate = document.createElement('p')
-                    empate.innerText = 'Empatou'
                     document.getElementById("music").pause()
                     document.getElementById("draw").play()
+                    const empate = document.createElement('p')
+                    empate.innerText = 'Empatou'
                     show.appendChild(empate)
                 }
             }
