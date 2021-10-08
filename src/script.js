@@ -8,7 +8,6 @@ const startScreen = document.createElement('div')
 startScreen.id = 'tela-inicial'
 document.body.appendChild(startScreen)
 
-
 /*-------------PERSONAGENS-------------------*/
 
 const mario_img = document.createElement('img')
@@ -57,13 +56,91 @@ bowser_gif.id = 'gif_bowser'
 bowser_gif.classList.add('gifs')
 bowser_gif.src = './assets/gifs/bowser.gif'
 
+/*------------------------WIN-CONDITION--------------------*/
+
+const checkVictory = (id) => {
+    const check = document.getElementById(id).firstElementChild.className
+    const coord = id.split('-')
+
+    // vertical
+    let count = 0
+    let xy = [...coord]
+    let cell = String
+    while (xy[1] >= 0) {
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
+        else { break }
+        xy[1]--
+    }
+    if (count >= 4) return true
+
+    // horizontal
+    count = 0
+    xy = [...coord]
+    while (xy[0] >= 0) {
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
+        else { break }
+        xy[0]--
+    }
+    xy = [...coord]
+    while (xy[0] < 7) {
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
+        else { break }
+        xy[0]++
+    }
+    if (count >= 5) return true
+
+    // diagonal direita
+    count = 0
+    xy = [...coord]
+    while (xy[0] >= 0 && xy[1] >= 0) {
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
+        else { break }
+        xy[0]--
+        xy[1]--
+    }
+    xy = [...coord]
+    while (xy[0] < 7 && xy[1] < 6) {
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
+        else { break }
+        xy[0]++
+        xy[1]++
+    }
+    if (count >= 5) return true
+
+    // diagonal esquerda
+    count = 0
+    xy = [...coord]
+    while (xy[0] >= 0 && xy[1] < 6) {
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
+        else { break }
+        xy[0]--
+        xy[1]++
+    }
+    xy = [...coord]
+    while (xy[0] < 7 && xy[1] >= 0) {
+        cell = document.getElementById(`${xy[0]}-${xy[1]}`)
+        if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
+        else { break }
+        xy[0]++
+        xy[1]--
+    }
+    if (count >= 5) return true
+
+    return false
+}
+
 /*--------------SELECIONANDO-CHARACTER--------------*/
 
 mario_img.addEventListener('click', select)
 luigi_img.addEventListener('click', select)
 peach_img.addEventListener('click', select)
 bowser_img.addEventListener('click', select)
-
 
 let selecionado = 0
 let firstPlayer
@@ -136,8 +213,6 @@ function select(evt) {
 
             /*------------------CRIANDO-QUADRO------------------*/
 
-            const boardArray = []
-
             const createBoard = () => {
                 document.getElementById("music").play()
                 const body = document.querySelector('body')
@@ -151,7 +226,6 @@ function select(evt) {
                     column.id = `column${i}`
                     column.style.width = `${100 / 7}%`
                     board.appendChild(column)
-                    boardArray[i] = []
 
                     for (j = 5; j >= 0; j--) {
                         const div = document.createElement('div')
@@ -159,11 +233,9 @@ function select(evt) {
                         div.id = `${i}-${j}`
                         div.style.height = `${100 / 6}%`
                         column.appendChild(div)
-                        boardArray[i][j] = ''
                     }
                     column.addEventListener('click', selecionar)
                 }
-
 
                 const dialog = document.createElement('section')
                 dialog.id = 'dialog'
@@ -181,10 +253,8 @@ function select(evt) {
                 let posit = columnId.split('')
                 let columnNumber = posit[posit.length - 1]
 
-
                 for (let i = 0; i <= 5; i++) {
                     let celula = document.getElementById(`${columnNumber}-${i}`)
-
 
                     if (alteraCor === true) {
 
@@ -200,8 +270,7 @@ function select(evt) {
                             
                             break;
                         }
-                    }   else {
-
+                    } else {
 
                         if (celula.childElementCount === 0) {
                             let secondPlayerImage = document.createElement('img')
@@ -216,95 +285,10 @@ function select(evt) {
                             break;
                         }
                     }
-                }
-                
+                }  
             }
-
             createBoard()
         })
-
-
-        /*------------------------WIN-CONDITION--------------------*/
-
-
-        // const checkVictory = (id) =>
-        function checkVictory(id) {
-            const check = document.getElementById(id).firstElementChild.className
-            const coord = id.split('-')
-            // vertical
-            
-            
-            let count = 0
-            let xy = [...coord]
-            let cell = String
-            while (xy[1] >= 0) {
-                cell = document.getElementById(`${xy[0]}-${xy[1]}`)
-                if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
-                else { break }
-                xy[1]--
-            }
-            if (count >= 4) return true
-
-            // horizontal
-            count = 0
-            xy = [...coord]
-            while (xy[0] >= 0) {
-                cell = document.getElementById(`${xy[0]}-${xy[1]}`)
-                if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
-                else { break }
-                xy[0]--
-            }
-            xy = [...coord]
-            while (xy[0] < 7) {
-                cell = document.getElementById(`${xy[0]}-${xy[1]}`)
-                if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
-                else { break }
-                xy[0]++
-            }
-            if (count >= 5) return true
-
-            // diagonal direita
-            count = 0
-            xy = [...coord]
-            while (xy[0] >= 0 && xy[1] >= 0) {
-                cell = document.getElementById(`${xy[0]}-${xy[1]}`)
-                if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
-                else { break }
-                xy[0]--
-                xy[1]--
-            }
-            xy = [...coord]
-            while (xy[0] < 7 && xy[1] < 6) {
-                cell = document.getElementById(`${xy[0]}-${xy[1]}`)
-                if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
-                else { break }
-                xy[0]++
-                xy[1]++
-            }
-            if (count >= 5) return true
-
-            // diagonal esquerda
-            count = 0
-            xy = [...coord]
-            while (xy[0] >= 0 && xy[1] < 6) {
-                cell = document.getElementById(`${xy[0]}-${xy[1]}`)
-                if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
-                else { break }
-                xy[0]--
-                xy[1]++
-            }
-            xy = [...coord]
-            while (xy[0] < 7 && xy[1] >= 0) {
-                cell = document.getElementById(`${xy[0]}-${xy[1]}`)
-                if (cell.childElementCount > 0 && cell.firstElementChild.className === check) { count++ }
-                else { break }
-                xy[0]++
-                xy[1]--
-            }
-            if (count >= 5) return true
-
-            return false
-        }
 
         /*------------DEMONSTRANDO-VITORIA-EMPATE-------------------*/
 
@@ -312,7 +296,6 @@ function select(evt) {
 
         function victory(id) {
             const show = document.getElementById('dialog')
-            
             const endGame = document.createElement('div')
             endGame.id = 'endBox'
 
@@ -334,43 +317,23 @@ function select(evt) {
                     
                     winner.src = firstPlayer
 
-                    if (firstPlayer === mario_img.src){
-                        endGame.appendChild(mario_gif)
-
-                    } else if (firstPlayer === luigi_img.src){
-                        endGame.appendChild(luigi_gif)
-
-
-                    } else if (firstPlayer === bowser_img.src){
-                        endGame.appendChild(bowser_gif)
-
-                    } else {
-                        endGame.appendChild(peach_gif)
-
-                    }
+                    if (firstPlayer === mario_img.src) { endGame.appendChild(mario_gif) }
+                    else if (firstPlayer === luigi_img.src) { endGame.appendChild(luigi_gif) }
+                    else if (firstPlayer === bowser_img.src) { endGame.appendChild(bowser_gif) }
+                    else { endGame.appendChild(peach_gif) }
                 
                 } else {
                     dialog.innerHTML = ''
+
                     winner.src = secondPlayer
             
-                
-                    if (secondPlayer === mario_img.src){
-                        endGame.appendChild(mario_gif)
-
-                    } else if (secondPlayer === luigi_img.src){
-                        endGame.appendChild(luigi_gif)
-
-
-                    } else if (secondPlayer === bowser_img.src){
-                        endGame.appendChild(bowser_gif)
-
-                    } else {
-                        endGame.appendChild(peach_gif)
-
-                    }
+                    if (secondPlayer === mario_img.src){ endGame.appendChild(mario_gif) }
+                    else if (secondPlayer === luigi_img.src) { endGame.appendChild(luigi_gif) }
+                    else if (secondPlayer === bowser_img.src) { endGame.appendChild(bowser_gif) }
+                    else { endGame.appendChild(peach_gif) }
                 }
 
-                vitoria.innerText = `O vencedor é:`
+                vitoria.innerText = 'O vencedor é:'
                 show.appendChild(vitoria)
                 show.appendChild(vicShow)
                 vicShow.appendChild(winner)
@@ -397,4 +360,3 @@ function select(evt) {
         }
     }
 }
-
