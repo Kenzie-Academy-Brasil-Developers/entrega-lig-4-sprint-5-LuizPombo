@@ -188,7 +188,6 @@ function select(evt) {
             playButton.style.display = 'none'
 
             /*------------------CRIANDO-QUADRO------------------*/
-
             const createBoard = () => {
                 document.getElementById("music").play()
                 const body = document.querySelector('body')
@@ -322,6 +321,7 @@ function select(evt) {
                 count += 1
 
                 if (count >= 42) {
+                    show.innerText = "Empatou"
                     document.getElementById("music").pause()
                     document.getElementById("draw").play()
                     const empate = document.createElement('p')
